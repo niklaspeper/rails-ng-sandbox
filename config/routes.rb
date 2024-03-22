@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # get '/articles', to: "articles#index"
   # get "/articles/:id", to: "articles#show"
 
+  # redirect to root path when accessing webpage only with /en or /de attached
+  # get '/:locale' => "articles#index"
+
   # "resources :articles" automatically generates the following routes
   # and binds them to controller actions/ corresponding views:
   #
@@ -14,6 +17,8 @@ Rails.application.routes.draw do
   # PATCH /articles/:id - articles#update
   # PUT /articles/:id - articles#update
   # DELETE /articles/:id - articles#destroy
+
+  # scope "(:locale)", locale: /en|de/ do
   resources :articles do
     # this creates comments as a nested resource within articles,
     # automatically generates the following routes and binds them to controller actions/ corresponding views:
@@ -27,5 +32,6 @@ Rails.application.routes.draw do
     # PUT /articles/:article_id/comments/:id - comments#update
     # DELETE /articles/:article_id/comments/:id - comments#destroy
     resources :comments
+    # end
   end
 end
