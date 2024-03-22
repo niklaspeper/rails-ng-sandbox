@@ -1,6 +1,31 @@
 Rails.application.routes.draw do
-  root "articles#index"
+  root "articles#index" # prefix: root
   # get '/articles', to: "articles#index"
   # get "/articles/:id", to: "articles#show"
-  resources :articles
+
+  # "resources :articles" automatically generates the following routes
+  # and binds them to controller actions/ corresponding views:
+  #
+  # GET /articles - articles#index - prefix: articles
+  # POST /articles - articles#create
+  # GET /articles/new - articles#new - prefix: new_article
+  # GET /articles/:id/edit - articles#edit - prefix: edit_article
+  # GET /articles/:id - articles#show - prefix: article
+  # PATCH /articles/:id - articles#update
+  # PUT /articles/:id - articles#update
+  # DELETE /articles/:id - articles#destroy
+  resources :articles do
+    # this creates comments as a nested resource within articles,
+    # automatically generates the following routes and binds them to controller actions/ corresponding views:
+    #
+    # GET /articles/:article_id/comments - comments#index - prefix: article_comments
+    # POST /articles/:article_id/comments - comments#create
+    # GET /articles/:article_id/comments/new - comments#new - prefix: new_article_comment
+    # GET /articles/:article_id/comments/:id/edit - comments#edit - prefix: edit_article_comment
+    # GET /articles/:article_id/comments/:id - comments#show - prefix: article_comment
+    # PATCH /articles/:article_id/comments/:id - comments#update
+    # PUT /articles/:article_id/comments/:id - comments#update
+    # DELETE /articles/:article_id/comments/:id - comments#destroy
+    resources :comments
+  end
 end

@@ -1,0 +1,19 @@
+<!-- comment is passed through render function in show as a local variable -->
+<% unless comment.archived? %>
+  <p>
+    <strong>Author:</strong>
+    <%= comment.commenter %>
+  </p>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+  <p>
+    <!--    array builds the path to the resource to destroy such as /articles/1/comments/1-->
+    <%= link_to "Delete Comment", [comment.article, comment], data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </p>
+  <hr>
+<% end %>

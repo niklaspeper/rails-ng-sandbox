@@ -1,3 +1,22 @@
+<%= link_to "Back", root_path %>
 <h1><%= @article.title %></h1>
 
 <p><%= @article.body %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <!--  link_to executes a GET request per default. That's why the 'data'-option is needed, turbo_method causes the link to make a DELETE request-->
+  <li><%= link_to "Destroy", article_path(@article), data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %></li>
+</ul>
+
+<h2>Comments</h2>
+<!-- As the render method iterates over the @article.comments collection, it assigns each comment to a local variable
+named the same as the partial, in this case comment, which is then available in the partial for us to show.-->
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<!-- rails is smart enough to resolve comments/form to the form-partial located in app/views/comments -->
+<%= render "comments/form" %>
