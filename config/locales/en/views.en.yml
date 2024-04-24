@@ -1,0 +1,13 @@
+en:
+  articles:
+    index:
+      headline: Articles
+      new_article: New Article
+    new:
+      headline: New Article
+      title: Title
+      body: Body
+      public: Public
+      private: Private
+      archived: Archived
+      create_article: Create Article

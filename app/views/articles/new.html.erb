@@ -1,5 +1,5 @@
-<%= link_to "Back", root_path %>
-<h1>New Article</h1>
+<%= link_to t("back"), root_path %>
+<h1><%= t(".headline") %></h1>
 <!-- renders partial according to CRUD action. In this case rails knows the action is create due to the file name 'new'"
      for example the input values are empty and the submit btn says 'Create Article'-->
 <%= render 'form', article: @article %>

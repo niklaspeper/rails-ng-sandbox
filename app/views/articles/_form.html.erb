@@ -15,12 +15,14 @@
       <div><%= message %></div>
     <% end %>
   </div>
-  <div>
-    <%= f.label :status %><br>
-    <%= f.select :status, Visible::VALID_STATUSES, selected: article.status || "public" %>
-  </div>
 
   <div>
+    <%= f.label :status %><br>
+    <%= f.select :status, Visible::VALID_STATUSES.map { |status| [t("statuses.#{status}"), status] }, selected: article.status || "public" %>
+  </div>
+  
+  <div>
     <%= f.submit %>
+    <%#= f.submit t("articles.new.create_article") %>
   </div>
 <% end %>

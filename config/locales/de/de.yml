@@ -28,4 +28,30 @@
 #       enabled: "ON"
 
 de:
-  welcome: "Willkommen!"
+  welcome: Willkommen!
+  back: Zurück
+  statuses:
+    public: "Öffentlich"
+    private: "Privat"
+    archived: "Archiviert"
+  helpers:
+    submit:
+      create: "%{model} erstellen"
+      update: "%{model} speichern"
+  activerecord:
+    attributes:
+      article:
+        title: Titel
+        body: Text
+    errors:
+      models:
+        article:
+          attributes:
+            title:
+              blank: darf nicht leer sein
+            body:
+              blank: darf nicht leer sein
+              too_short: muss mindestens 10 Zeichen lang sein
+    models:
+      articles:
+        one: Artikel

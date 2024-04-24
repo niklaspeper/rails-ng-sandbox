@@ -28,4 +28,27 @@
 #       enabled: "ON"
 
 en:
-  welcome: "Welcome!"
+  welcome: Welcome!
+  back: Back
+  statuses:
+    public: "Public"
+    private: "Private"
+    archived: "Archived"
+  helpers:
+    submit:
+      create: "Create %{model}"
+      update: "Update %{model}"
+  activerecord:
+    attributes:
+      article:
+        title: Title
+        body: Body
+    errors:
+      models:
+        article:
+          attributes:
+            title:
+              blank: cannot be empty
+            body:
+              blank: cannot be empty
+              too_short: must contain at least 10 characters
