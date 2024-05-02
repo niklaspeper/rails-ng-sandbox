@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Blog</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-</head>
+    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
 
-<body>
-<% if I18n.locale == I18n.default_locale %>
-  <%= link_to "German", { :locale => 'de' } %>
-<% else %>
-  <%= link_to "Englisch", { :locale => 'en' } %>
-<% end %>
-<p id="notice"> <%= notice %></p>
-<%= yield %>
-</body>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=<%= root_path %>>Blog</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <% if I18n.locale == I18n.default_locale %>
+              <%= link_to "German", { :locale => 'de' }, class: "nav-link" %>
+            <% else %>
+              <%= link_to "Englisch", { :locale => 'en' }, class: "nav-link" %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container p-5">
+      <p id="notice"> <%= notice %></p>
+      <%= yield %>
+    </div>
+  </body>
 </html>

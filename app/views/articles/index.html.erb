@@ -1,16 +1,25 @@
-<h1><%= t(".headline") %></h1>
+<div class="row">
+  <div class="col">
+    <h1 class="pb-3"><%= t(".headline") %></h1>
+  </div>
+  <div class="col text-end">
+    <%= link_to t(".new_article"), new_article_path, class: "btn btn-lg btn-primary" %>
+  </div>
+</div>
 <h4><%= t("welcome") %></h4>
-<p>
+<p class="text-muted">
   Number of public articles:
   <%= Article.public_count %>
 </p>
-<ul>
-  <% @articles.each do |article| %>
-    <% unless article.archived? %>
-      <li>
-        <%= link_to article.title, article %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
-<%= link_to t(".new_article"), new_article_path %>
+
+<div class="row pb-5">
+  <div class="col">
+    <div class="list-group">
+      <% @articles.each do |article| %>
+        <% unless article.archived? %>
+          <%= link_to article.title, article, class: "list-group-item list-group-item-action" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

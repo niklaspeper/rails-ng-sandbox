@@ -2,6 +2,11 @@ source "https://rubygems.org"
 
 ruby "3.3.0"
 
+# for vs code plugin
+gem "ruby-lsp"
+gem "rubocop"
+gem "syntax_tree"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 

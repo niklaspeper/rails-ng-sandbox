@@ -12,11 +12,26 @@
   } %></li>
 </ul>
 
-<h2>Comments</h2>
-<!-- As the render method iterates over the @article.comments collection, it assigns each comment to a local variable
-named the same as the partial, in this case comment, which is then available in the partial for us to show.-->
-<%= render @article.comments %>
+<div class="card" data-controller="comments">
+  <div class="card-header">
+    Comments
+  </div>
+  <div class="card-body">
+    <p>
+      <button class="btn btn-sm btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseComments" aria-expanded="false" aria-controls="collapseExample" data-comments-target="button">
+        Show Comments
+      </button>
+    </p>
+    <div class="collapse" id="collapseComments" data-turbo-frame="commentsFrame" data-comments-target="collapse">
+      <!-- As the render method iterates over the @article.comments collection, it assigns each comment to a local variable
+  named the same as the partial, in this case comment, which is then available in the partial for us to show.-->
+      <%= render @article.comments %>
+    </div>
+  </div>
+</div>
+
 
 <h2>Add a comment:</h2>
 <!-- rails is smart enough to resolve comments/form to the form-partial located in app/views/comments -->
 <%= render "comments/form" %>
+
