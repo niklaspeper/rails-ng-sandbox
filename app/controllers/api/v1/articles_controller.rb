@@ -3,6 +3,7 @@
 module Api
   module V1
     class ArticlesController < ApplicationController
+      require 'csv'
       skip_before_action :verify_authenticity_token
 
       def index
@@ -37,6 +38,22 @@ module Api
         @article = Article.find(params[:id])
         @article.destroy
         head :no_content
+      end
+
+      def xml_index
+        @articles = Article.all
+        render xml: @articles
+      end
+
+      def csv_index
+        @articles = Article.all
+        csv_data = CSV.generate do |csv|
+          csv << %w[ID Title Body Status]
+          @articles.each do |article|
+            csv << [article.id, article.title, article.body, article.status]
+          end
+        end
+        send_data csv_data, filename: 'articles.csv', type: 'text/csv'
       end
 
       private

@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get 'articles/xml', to: 'articles#xml_index'
+      get 'articles/csv', to: 'articles#csv_index'
       resources :articles
     end
     namespace :v2 do
