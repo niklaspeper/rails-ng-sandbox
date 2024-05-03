@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  root "articles#index" # prefix: root
+  root 'articles#index' # prefix: root
   # get '/articles', to: "articles#index"
   # get "/articles/:id", to: "articles#show"
 
@@ -43,5 +45,4 @@ Rails.application.routes.draw do
       resources :articles
     end
   end
-  
 end

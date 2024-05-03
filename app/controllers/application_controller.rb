@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   around_action :switch_locale
 
@@ -12,5 +14,4 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { locale: I18n.locale }
   end
-
 end

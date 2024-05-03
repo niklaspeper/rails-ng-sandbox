@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
-  
+  http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
+
   # @article -> instanzvariable eines controllers
   def index
     @articles = Article.all

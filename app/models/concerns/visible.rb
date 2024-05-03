@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 module Visible
-  # as validations are called at class level and this is a module, this extension is used for simpler implementation of validation
+  # as validations are called at class level and this is a module, this extension is used for simpler implementation of
+  # validation
   extend ActiveSupport::Concern
 
-  VALID_STATUSES = ["public", "private", "archived"]
+  VALID_STATUSES = %w[public private archived].freeze
 
   included do
     validates :status, inclusion: { in: VALID_STATUSES }
