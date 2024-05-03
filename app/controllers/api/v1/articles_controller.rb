@@ -13,7 +13,10 @@ module Api
 
       def show
         @article = Article.find(params[:id])
-        render json: @article
+        # render json: @article
+        # here goes custom serialization instead of default rails json rendering
+        serialized = ArticleSerializer.serialize(@article)
+        render json: serialized
       end
 
       def create
