@@ -4,6 +4,9 @@ class Article < ApplicationRecord
   # include "visible" concern as a module
   include Visible
 
+  # validation rules
+  validates :title, presence: true, uniqueness: true
+
   # 1 to n relationship
   # enables instance variables such as @article to access belonging comments using "@article.comments"
   # dependent option used to destroy also associated objects such as comments on destroy of an article
