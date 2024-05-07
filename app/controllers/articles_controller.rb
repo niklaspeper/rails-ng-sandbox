@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
+  include Factories
+  # http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
 
   # @article -> instanzvariable eines controllers
   def index
@@ -20,8 +21,16 @@ class ArticlesController < ApplicationController
 
   # create is mapped to the "new article" form action in the "new" view
   def create
-    @article = Article.new(article_params)
-
+    # retrieves and deletes article param 'status'
+    article_status = article_params.delete(:status)
+    case article_status
+    when 'public'
+      @article = ArticleFactory.create_public(article_params)
+    when 'private'
+      @article = ArticleFactory.create_private(article_params)
+    when 'archived'
+      @article = ArticleFactory.create_archived(article_params)
+    end
     # @article.save actually (tries to) save(s) the article in the database
     if @article.save
       redirect_to @article
