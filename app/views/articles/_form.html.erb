@@ -1,7 +1,6 @@
 <%# using partials as helpers for views (ruby on rails design pattern) %>
 <%= form_with model: article do |f| %>
   <div>
-    <!--    :title , "new label"-->
     <%= f.label :title %><br>
     <%= f.text_field :title %>
     <% article.errors.full_messages_for(:title).each do |message| %>

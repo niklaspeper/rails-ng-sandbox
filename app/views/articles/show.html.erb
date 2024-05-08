@@ -1,7 +1,9 @@
 <%= link_to "Back", root_path %>
-<div class="row mt-5">
+<div class="row my-5">
   <div class="col-8">
-    <h1><%= @article.title %></h1>
+    <h1><%= @article.title %>
+    </h1>
+    <small class="text-muted"><%=@article.created_at.strftime("erstellt am %d.%m.%Y, %H:%M Uhr")%></small>
   </div>
   <div class="col-2 p-1">
     <div class="d-grid">
@@ -18,26 +20,27 @@
     </div>
   </div>
 </div>
-<h6 class='text-muted pt-3'>Description</h6>
-<p><%= @article.body %></p>
+<p class="mb-5"><%= @article.body %></p>
 <hr>
-<div class="card mt-5" data-controller="comments">
-  <div class="card-header">
-    Comments
-  </div>
-  <div class="card-body">
-    <p>
-      <button class="btn btn-sm btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseComments" aria-expanded="false" aria-controls="collapseExample" data-comments-target="button">
-        Show Comments
-      </button>
-    </p>
-    <div class="collapse" id="collapseComments" data-turbo-frame="commentsFrame" data-comments-target="collapse">
-      <!-- As the render method iterates over the @article.comments collection, it assigns each comment to a local variable
-  named the same as the partial, in this case comment, which is then available in the partial for us to show.-->
-      <%= render @article.comments %>
+<div class="my-4" data-controller="comments">
+  <div class="row">
+    <div class="col-10 mb-4">
+      <h3>Comments</h3>
+    </div>
+    <div class="col-2 p-1">
+      <div class="d-grid">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseComments" aria-expanded="false" aria-controls="collapseExample" data-comments-target="button" data-action="click->comments#toggleButtonText">
+          Show Comments
+        </button>
+      </div>
     </div>
   </div>
+  <div class="collapse" id="collapseComments" data-turbo-frame="commentsFrame" data-comments-target="collapse">
+    <!-- As the render method iterates over the @article.comments collection, it assigns each comment to a local variable
+  named the same as the partial, in this case comment, which is then available in the partial for us to show.-->
+    <%= render @article.comments %>
+    <h5 class="mt-5">Add a comment:</h5>
+    <!-- rails is smart enough to resolve comments/form to the form-partial located in app/views/comments -->
+    <%= render "comments/form" %>
+  </div>
 </div>
-<h2>Add a comment:</h2>
-<!-- rails is smart enough to resolve comments/form to the form-partial located in app/views/comments -->
-<%= render "comments/form" %>
