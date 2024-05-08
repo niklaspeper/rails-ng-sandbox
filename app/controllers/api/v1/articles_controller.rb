@@ -3,7 +3,11 @@
 module Api
   module V1
     class ArticlesController < ApplicationController
+      # mixin from helper made available in controller
+      include Api::V1::ArticlesHelper
       require 'csv'
+
+      before_action :parse_and_validate_json_request, only: [:create]
       skip_before_action :verify_authenticity_token
 
       def index

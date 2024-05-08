@@ -1,3 +1,4 @@
+<%# using partials as helpers for views (ruby on rails design pattern) %>
 <%= form_with model: article do |f| %>
   <div>
     <!--    :title , "new label"-->
@@ -7,7 +8,6 @@
       <div><%= message %></div>
     <% end %>
   </div>
-
   <div>
     <%= f.label :body %><br>
     <%= f.text_area :body %>
@@ -15,12 +15,10 @@
       <div><%= message %></div>
     <% end %>
   </div>
-
   <div>
     <%= f.label :status %><br>
     <%= f.select :status, Visible::VALID_STATUSES.map { |status| [t("statuses.#{status}"), status] }, selected: article.status || "public" %>
   </div>
-  
   <div>
     <%= f.submit %>
   </div>

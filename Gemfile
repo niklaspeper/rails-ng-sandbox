@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 ruby '3.3.0'
 
 # for vs code plugin
+gem 'htmlbeautifier'
 gem 'rubocop'
 gem 'ruby-lsp'
 gem 'syntax_tree'
