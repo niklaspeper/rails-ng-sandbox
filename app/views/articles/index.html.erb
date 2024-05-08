@@ -6,12 +6,16 @@
     <%= link_to t(".new_article"), new_article_path, class: "btn btn-lg btn-primary" %>
   </div>
 </div>
+<%= form_with(url: articles_path, method: :get, local: true) do |form| %>
+  <%= form.label :keyword, 'Search:' %>
+  <%= form.text_field :keyword%>
+  <%= form.submit 'Search'%>
+<%end%>
 <h4><%= t("welcome") %></h4>
 <p class="text-muted">
   Number of public articles:
   <%= Article.public_count %>
 </p>
-
 <div class="row pb-5">
   <div class="col">
     <div class="list-group">

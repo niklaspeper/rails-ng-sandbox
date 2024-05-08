@@ -5,7 +5,11 @@ class ArticlesController < ApplicationController
 
   # @article -> instanzvariable eines controllers
   def index
-    @articles = Article.all
+    @articles = if params[:keyword].present?
+                  Article.search(params[:keyword])
+                else
+                  Article.all
+                end
   end
 
   def show
@@ -56,6 +60,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :status)
+    params.require(:article).permit(:title, :body, :status, :keyword)
   end
 end
