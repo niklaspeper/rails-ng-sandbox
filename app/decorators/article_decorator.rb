@@ -19,6 +19,6 @@ class ArticleDecorator
   end
 
   def formatted_date
-    article.created_at.strftime('%A, %d %b %Y %I:%M %p')
+    article.created_at.strftime('%A, %d. %b %Y %H:%M %p')
   end
 end

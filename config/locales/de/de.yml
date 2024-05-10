@@ -28,6 +28,9 @@
 #       enabled: "ON"
 
 de:
+  time:
+    formats:
+      default: "%d.%m.%Y, %H:%M Uhr"
   welcome: Willkommen!
   back: Zurück
   statuses:
