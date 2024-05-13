@@ -4,6 +4,9 @@ require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Settings specified here will take precedence over those in config/application.rb.
+  config.log_level = :debug
+  # verbose logging for detailed information
+  # :debug is most detailed logging level
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development

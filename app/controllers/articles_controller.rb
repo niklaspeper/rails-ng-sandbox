@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
+  include LoggingModule
+  before_action :set_article, only: %i[show edit update destroy]
+
   # http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
 
   # @article -> instanzvariable eines controllers
@@ -10,10 +13,11 @@ class ArticlesController < ApplicationController
                 else
                   Article.all
                 end
+    log_debug('Articles Loaded')
   end
 
   def show
-    @article = Article.find(params[:id])
+    log_info("Viewed Article #{@article.title}")
   end
 
   # new is mapped to the "new" view
@@ -34,14 +38,10 @@ class ArticlesController < ApplicationController
   end
 
   # edit is mapped to the "edit" view
-  def edit
-    # get an instance of the article to be edited
-    @article = Article.find(params[:id])
-  end
+  def edit; end
 
   # update is mapped to the "edit article" form action in the "edit" view
   def update
-    @article = Article.find(params[:id])
     if @article.update(article_params)
       redirect_to @article
     else
@@ -50,15 +50,23 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy
     redirect_to root_path, status: :see_other
   end
 
-  # "strong parameter"
-
   private
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  # allows custom behaviour instead of red screen of death shown to users
+  rescue ActiveRecord::RecordNotFound
+    # making use of custom logging module method
+    log_error("Article not found - ID #{params[:id]}")
+    redirect_to articles_path, notice: 'Article not found.'
+  end
+
+  # "strong parameter"
   def article_params
     params.require(:article).permit(:title, :body, :status, :keyword)
   end
