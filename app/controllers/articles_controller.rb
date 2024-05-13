@@ -14,6 +14,8 @@ class ArticlesController < ApplicationController
                   Article.all
                 end
     log_debug('Articles Loaded')
+    # 'now' lets flash show only for this action
+    # flash.now[:notice] = "We have exactly #{@articles.size} articles available."
   end
 
   def show
@@ -63,7 +65,7 @@ class ArticlesController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     # making use of custom logging module method
     log_error("Article not found - ID #{params[:id]}")
-    redirect_to articles_path, notice: 'Article not found.'
+    redirect_to articles_path, alert: 'Article not found.'
   end
 
   # "strong parameter"
