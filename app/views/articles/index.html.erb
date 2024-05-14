@@ -4,17 +4,16 @@
   <%= Article.public_count %>
 </p>
 <div class="row align-items-center mb-3">
-  <div class="col  ">
+  <div class="col">
     <h1 class="py-3"><%= t(".headline") %></h1>
   </div>
   <div class="col text-end">
     <%= link_to t(".new_article"), new_article_path, class: "btn btn-lg btn-primary" %>
   </div>
 </div>
-<%= form_with(url: articles_path, method: :get, local: true) do |form| %>
-  <%= form.label :keyword, 'Search:' %>
-  <%= form.text_field :keyword%>
-  <%= form.submit 'Search'%>
+<%= form_with(url: articles_path, method: :get, local: true, class:'input-group mb-3') do |form| %>
+  <%= form.search_field :keyword, class:'form-control', placeholder:'Search Articles...', aria:{label: 'Search Articles...', describedby:'button-addon'}%>
+  <%= form.submit 'Search', class:'btn btn-outline-secondary', id:'button-addon'%>
 <%end%>
 <div class="row py-5">
   <div class="col">
