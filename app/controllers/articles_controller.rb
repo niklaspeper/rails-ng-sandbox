@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
     @article = ArticleCreator.new(article_params).create
     # @article.save actually (tries to) save(s) the article in the database
     if @article.save
-      redirect_to @article
+      redirect_to @article, success: 'New article created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -44,15 +44,15 @@ class ArticlesController < ApplicationController
   # update is mapped to the "edit article" form action in the "edit" view
   def update
     if @article.update(article_params)
-      redirect_to @article
+      redirect_to @article, success: 'Article successfully updated.'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity, danger: 'Article was not updated.'
     end
   end
 
   def destroy
     @article.destroy
-    redirect_to root_path, status: :see_other
+    redirect_to root_path, status: :see_other, success: 'Article successfully deleted.'
   end
 
   private

@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   # include ErrorHandling
   around_action :switch_locale
+  add_flash_types :error, :success
 
   def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
