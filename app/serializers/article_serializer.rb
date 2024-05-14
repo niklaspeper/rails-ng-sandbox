@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # custom serializer for article model
+# this serializer is transforming an active record object into a ruby object
 class ArticleSerializer
   attr_accessor :article
 

@@ -19,6 +19,7 @@ RSpec.describe Article, type: :model do
       Article.create(title: 'Article3', body: 'Private test article', status: 'private', created_at: 2.days.ago)
     end
     # it expectation describes the method that is to be tested
+    # - unit test
     it '#all_public' do
       public_articles = Article.where(status: 'public')
       expect(Article.all_public).to eq(public_articles)
@@ -26,6 +27,7 @@ RSpec.describe Article, type: :model do
 
     # test driven development (programming methodology)
     # this test was written before the actual scope was implemented
+    # - unit test
     it '#sort_by_created_at' do
       sort_by_created = [article1, article2, article3]
       expect(Article.sort_by_created_at).to eq(sort_by_created)
