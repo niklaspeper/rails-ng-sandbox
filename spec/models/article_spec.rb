@@ -10,13 +10,15 @@ RSpec.describe Article, type: :model do
   context 'scopes' do
     # let keyword is used to globally use variables in between the same context
     let!(:article1) do
-      Article.create(title: 'Article1', body: 'Public test article', status: 'public', created_at: Time.now)
+      FactoryBot.create(:article)
     end
     let!(:article2) do
-      Article.create(title: 'Article2', body: 'Public test article', status: 'public', created_at: 1.day.ago)
+      # using the trait :old (1.day.ago) here
+      FactoryBot.create(:article, :old)
     end
     let!(:article3) do
-      Article.create(title: 'Article3', body: 'Private test article', status: 'private', created_at: 2.days.ago)
+      # overriding specific attributes created by factorybot
+      FactoryBot.create(:article, created_at: 2.days.ago)
     end
     # it expectation describes the method that is to be tested
     # - unit test
