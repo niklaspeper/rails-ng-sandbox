@@ -1,0 +1,10 @@
+.button {
+  padding-inline: 1rem;
+  text-decoration: underline;
+  color: blue;
+}
+
+.publicBadge {
+  color: green;
+  font-weight: bold;
+}
