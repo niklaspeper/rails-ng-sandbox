@@ -11,8 +11,8 @@
 </div>
 <!-- ngclass directive for more complex class binding using a function in the component logic: -->
 <div class="underlined" [ngClass]="getStatusClass(article)">{{article.status}}</div>
-<p><b>{{article?.title}}</b></p>
-<p>{{article?.body}}</p>
+<p><b>{{article.title}}</b></p>
+<p>{{article.body}}</p>
 <div class="pipe examples">
   <!-- <p> Price: ${{price.toFixed(2)}}</p> -->
   <!-- using ngs 'pipes' for easy data formatting -->
@@ -21,4 +21,5 @@
   <p> Price: {{price | currency:'EUR'}}</p>
   <!-- It's also possible to create custom pipes for specific data formatting! -->
 </div>
+<button (click)="likeButtonClicked()">Like this article</button>
 <button (click)="favourButtonClicked()">Favour this article</button>

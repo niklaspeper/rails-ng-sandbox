@@ -13,6 +13,7 @@ export class ArticleDetailsComponent {
   // defining an input property for this child component passing from parent
   @Input() article!: IArticle;
   // defining an output property for this child component passing data to parent
+  @Output() like = new EventEmitter();
   @Output() favour = new EventEmitter();
 
   price: number = 420;
@@ -29,6 +30,10 @@ export class ArticleDetailsComponent {
         : 'archived'
     // another possibility to return a css class name:
     // return { public: article.status === 'public' }
+  }
+  // trigger event to output data to parent 
+  likeButtonClicked() {
+    this.like.emit();
   }
   // trigger event to output data to parent 
   favourButtonClicked() {

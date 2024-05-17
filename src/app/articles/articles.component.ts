@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IArticle } from './article.model';
 import { CommonModule } from '@angular/common';
 import { ArticleDetailsComponent } from "../article-details/article-details.component";
+import { FavouritesService } from '../favourites.service';
 
+// a component should implement the logic for displaying the data
 @Component({
   selector: 'blog-articles',
   standalone: true,
@@ -14,7 +16,11 @@ export class ArticlesComponent {
   article: IArticle;
   articles: any;
   filter: string = '';
-  favouredArticles: IArticle[] = [];
+  likedArticles: IArticle[] = [];
+  // inject FavouritesService dependency
+  private favSvc: FavouritesService = inject(FavouritesService);
+  // also works as constructor injection which might have minor pros for writing tests
+  // constructor(private favSvc: FavouritesService) {
 
   constructor() {
     this.article = {
@@ -57,8 +63,14 @@ export class ArticlesComponent {
       ? this.articles
       : this.articles.filter((article: any) => article.status === this.filter);
   }
+  addLikedArticle(article: IArticle) {
+    this.likedArticles.push(article);
+  }
   addFavouredArticle(article: IArticle) {
-    this.favouredArticles.push(article);
+    this.favSvc.add(article);
+  }
+  getFavouredArticles() {
+    return this.favSvc.favouredArticles;
   }
 }
 

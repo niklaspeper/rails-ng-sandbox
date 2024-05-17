@@ -23,8 +23,13 @@
 <p>{{article.body}}</p>
 <p>{{article.status}}</p>
 <hr>
+<p><b>Liked Articles</b></p>
+<li *ngFor="let article of likedArticles">
+  <p>{{article.title}}</p>
+</li>
+<hr>
 <p><b>Favoured Articles</b></p>
-<li *ngFor="let article of favouredArticles">
+<li *ngFor="let article of getFavouredArticles()">
   <p>{{article.title}}</p>
 </li>
 <hr>
@@ -43,7 +48,8 @@
     <li *ngFor="let article of getFilteredArticles()">
       <!-- passing down data to child component ([article]="article")-->
       <!-- receiving events from child components ((favor)="addFavouredArticle(article)") -->
-      <blog-article-details [article]="article" (favour)="addFavouredArticle(article)"></blog-article-details>
+      <blog-article-details [article]="article" (like)="addLikedArticle(article)"
+        (favour)="addFavouredArticle(article)"></blog-article-details>
     </li>
   </ul>
 </div>
