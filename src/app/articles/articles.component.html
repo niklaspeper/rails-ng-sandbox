@@ -23,7 +23,11 @@
 <p>{{article.body}}</p>
 <p>{{article.status}}</p>
 <hr>
-
+<p><b>Favoured Articles</b></p>
+<li *ngFor="let article of favouredArticles">
+  <p>{{article.title}}</p>
+</li>
+<hr>
 <div>
   <div class="filters">
     <span>Filter: </span>
@@ -37,29 +41,9 @@
   <ul>
     <!-- angular for loop -->
     <li *ngFor="let article of getFilteredArticles()">
-      <div hidden>
-        <!-- example usage of ngif directive-->
-        <div *ngIf="article.status==='public'" class="public">public</div>
-        <!-- same with attribute binding: good for complex render content 
-      cause element is not actually rendered to dom but just set as hidden -->
-        <div [hidden]="article.status!=='public'" class="public">public</div>
-        <!-- another option for simple class binding: -->
-        <div [class.private]="article.status==='private'">private</div>
-        <!-- style binding is also possible -->
-        <div [style.color]="article.status==='private'">private</div>
-      </div>
-      <!-- ngclass directive for more complex class binding using a function in the component logic: -->
-      <div class="underlined" [ngClass]="getStatusClass(article)">{{article.status}}</div>
-      <p><b>{{article?.title}}</b></p>
-      <p>{{article?.body}}</p>
-      <div class="pipe examples">
-        <p> Price: ${{price.toFixed(2)}}</p>
-        <!-- using ngs 'pipes' for easy data formatting -->
-        <p> Price: {{price | currency}}</p>
-        <!-- also parameters are permitted -->
-        <p> Price: {{price | currency:'EUR'}}</p>
-        <!-- It's also possible to create custom pipes for specific data formatting! -->
-      </div>
+      <!-- passing down data to child component ([article]="article")-->
+      <!-- receiving events from child components ((favor)="addFavouredArticle(article)") -->
+      <blog-article-details [article]="article" (favour)="addFavouredArticle(article)"></blog-article-details>
     </li>
   </ul>
 </div>

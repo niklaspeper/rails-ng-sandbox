@@ -3,27 +3,3 @@
   text-decoration: underline;
   color: blue;
 }
-
-.public {
-  color: green;
-}
-
-.private {
-  color: peru;
-}
-
-.archived {
-  color: grey;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.italic {
-  font-style: italic;
-}
-
-.underlined {
-  text-decoration: underline;
-}
