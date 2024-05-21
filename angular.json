@@ -60,7 +60,8 @@
               "buildTarget": "ng-frontend:build:production"
             },
             "development": {
-              "buildTarget": "ng-frontend:build:development"
+              "buildTarget": "ng-frontend:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
