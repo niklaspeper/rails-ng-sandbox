@@ -66,7 +66,7 @@ module Api
       private
 
       def article_params
-        params.permit(:title, :body, :comments)
+        params.permit(:title, :body, :status, :comments)
       end
     end
   end
