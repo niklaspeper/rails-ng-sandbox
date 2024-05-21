@@ -3,6 +3,7 @@ import { IArticle } from './article.model';
 import { CommonModule } from '@angular/common';
 import { ArticleDetailsComponent } from "../article-details/article-details.component";
 import { FavouritesService } from '../favourites.service';
+import { ArticlesService } from './articles.service';
 
 // a component should implement the logic for displaying the data
 @Component({
@@ -19,8 +20,10 @@ export class ArticlesComponent {
   likedArticles: IArticle[] = [];
   // inject FavouritesService dependency
   private favSvc: FavouritesService = inject(FavouritesService);
+  private artSvc: ArticlesService = inject(ArticlesService);
   // also works as constructor injection which might have minor pros for writing tests
   // constructor(private favSvc: FavouritesService) {
+
 
   constructor() {
     this.article = {
@@ -28,32 +31,13 @@ export class ArticlesComponent {
       body: 'This is the article for testing angular frontend',
       status: 'public'
     };
-    this.articles =
-      [{
-        title: 'First Test Article',
-        body: 'This is the first article for testing angular frontend',
-        status: 'public'
-      },
-      {
-        title: 'Second Test Article',
-        body: 'This is the second article for testing angular frontend',
-        status: 'private'
-      },
-      {
-        title: 'Third Test Article',
-        body: 'This is the third article for testing angular frontend',
-        status: 'public'
-      }, {
-        title: 'Fourth Test Article',
-        body: 'This is the fourth article for testing angular frontend',
-        status: 'archived'
-      }, {
-        title: 'Fifth Test Article',
-        body: 'This is the fifth article for testing angular frontend',
-        status: 'public'
-      },
-      ]
-
+  }
+  ngOnInit() {
+    // this method returns an observable, so just calling the method doesn't do anything.
+    // it needs to be called the 'subscribe' method to get the results
+    this.artSvc.getArticles().subscribe(articles => {
+      this.articles = articles;
+    });
   }
   createAltTag(article: IArticle) {
     return article.title + ' example pic'
