@@ -3,6 +3,7 @@
 class ArticlesController < ApplicationController
   include LoggingModule
   before_action :set_article, only: %i[show edit update destroy]
+  before_action :create_testuser, only: %i[show create edit update destroy]
   # http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
 
   # @article -> instanzvariable eines controllers
@@ -68,8 +69,15 @@ class ArticlesController < ApplicationController
     redirect_to articles_path, alert: 'Article not found.'
   end
 
+  def create_testuser
+    return unless User.all.empty?
+
+    User.create
+  end
+
   # "strong parameter"
   def article_params
+    # set user id to 1 cause its the test user id
     params.require(:article).permit(:title, :body, :status, :keyword).merge(user_id: 1)
   end
 end
