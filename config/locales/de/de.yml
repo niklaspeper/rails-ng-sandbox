@@ -47,6 +47,8 @@ de:
         title: Titel
         body: Text
     errors:
+      messages:
+        record_invalid: Record Invalid
       models:
         article:
           attributes:

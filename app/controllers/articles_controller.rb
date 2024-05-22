@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
 
   # create is mapped to the "new article" form action in the "new" view
   def create
+    puts article_params
     @article = ArticleCreator.new(article_params).create
     # @article.save actually (tries to) save(s) the article in the database
     if @article.save
@@ -69,6 +70,6 @@ class ArticlesController < ApplicationController
 
   # "strong parameter"
   def article_params
-    params.require(:article).permit(:title, :body, :status, :keyword)
+    params.require(:article).permit(:title, :body, :status, :keyword).merge(user_id: 1)
   end
 end
