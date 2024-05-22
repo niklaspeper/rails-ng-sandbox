@@ -8,6 +8,7 @@ module Api
       require 'csv'
 
       before_action :parse_and_validate_json_request, only: [:create]
+      before_action :authenticate_user!
       skip_before_action :verify_authenticity_token
 
       def index
