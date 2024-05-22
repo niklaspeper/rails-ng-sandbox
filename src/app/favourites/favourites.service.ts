@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IArticle } from './articles/article.model';
-import { FactoryTarget } from '@angular/compiler';
+import { IArticle } from '../articles/article.model';
 
 // service implementation (angular best practice)
 // keeping the business logic encapsulated outside of a controller

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { IArticle } from './article.model';
 import { CommonModule } from '@angular/common';
 import { ArticleDetailsComponent } from "../article-details/article-details.component";
-import { FavouritesService } from '../favourites.service';
+import { FavouritesService } from '../favourites/favourites.service';
 import { ArticlesService } from './articles.service';
 
 // a component should implement the logic for displaying the data
