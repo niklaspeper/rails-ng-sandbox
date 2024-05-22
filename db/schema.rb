@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_22_092658) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_22_100056) do
   create_table "articles", force: :cascade do |t|
     t.string "title", null: false
     t.text "body"
@@ -30,6 +30,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_092658) do
     t.datetime "updated_at", null: false
     t.string "status", default: "public"
     t.index ["article_id"], name: "index_comments_on_article_id"
+  end
+
+  create_table "jwt_revocations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

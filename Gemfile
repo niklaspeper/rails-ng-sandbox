@@ -10,8 +10,12 @@ gem 'rubocop'
 gem 'ruby-lsp'
 gem 'syntax_tree'
 
-# user authentication
-gem 'devise', '~> 4.2'
+# user authentication with extension for jwt tokens
+gem 'devise'
+gem 'devise-jwt'
+
+# adds cors support
+gem 'rack-cors'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
