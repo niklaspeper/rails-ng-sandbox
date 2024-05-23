@@ -1,0 +1,55 @@
+<h3>Articles</h3>
+<hr>
+<h6>Test Elements</h6>
+<!-- with interpolation -->
+<div id="data binding example">
+  <!-- safe navigation operator '?' checks if object is null -->
+  <!-- if null, it renders nothing rather than throwing an error -->
+  <img src="" alt="{{article?.title+ ' example pic'}}">
+  <br>
+  <!-- without interpolation - using expressions -->
+  <!-- note: square brackets create only one-way binding from component to template -->
+  <!-- expressions are evaluated and return a new value-->
+  <img src="" [alt]="article.title+ ' example pic'">
+  <br>
+  <!-- example with function binding -->
+  <img src="" [alt]="createAltTag(article)">
+</div>
+<br>
+<hr>
+<br>
+<br>
+<p><b>{{article.title}}</b></p>
+<p>{{article.body}}</p>
+<p>{{article.status}}</p>
+<hr>
+<p><b>Liked Articles</b></p>
+<li *ngFor="let article of likedArticles">
+  <p>{{article.title}}</p>
+</li>
+<hr>
+<p><b>Favoured Articles</b></p>
+<li *ngFor="let article of getFavouredArticles()">
+  <p>{{article.title}}</p>
+</li>
+<hr>
+<div>
+  <div class="filters">
+    <span>Filter: </span>
+    <!-- example of binding to html events using statements-->
+    <!-- note: parentheses create only one-way binding from template to component -->
+    <!-- statements return no value and typically create some sort of change in the state of the app -->
+    <a class="button" (click)="filter='public'">public</a>
+    <a class="button" (click)="filter='private'">private</a>
+    <a class="button" (click)="filter='archived'">archived</a>
+  </div>
+  <ul>
+    <!-- angular for loop -->
+    <li *ngFor="let article of getFilteredArticles()">
+      <!-- passing down data to child component ([article]="article")-->
+      <!-- receiving events from child components ((favor)="addFavouredArticle(article)") -->
+      <blog-article-details [article]="article" (like)="addLikedArticle(article)"
+        (favour)="addFavouredArticle(article)"></blog-article-details>
+    </li>
+  </ul>
+</div>
