@@ -1,5 +1,6 @@
 <%= link_to t("back"), root_path %>
 <h1>Edit Article</h1>
 <!-- renders partial according to CRUD action. In this case rails knows the action is update due to the file name 'edit'"
-     for example the input values are filled with the actual values of the db entry and the submit btn says 'Update Article'-->
+for example the input values are filled with the actual values of the db entry
+and the submit btn says 'Update Article'-->
 <%= render 'form', article: @article %>

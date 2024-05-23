@@ -6,80 +6,81 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+/rails-backend/.bundle
 
 # Ignore all environment files (except templates).
-/.env*
-!/.env*.erb
+/rails-backend/.env*
+!/rails-backend/.env*.erb
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+/rails-backend/log/*
+/rails-backend/tmp/*
+!/rails-backend/log/.keep
+!/rails-backend/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
+/rails-backend/tmp/pids/*
+!/rails-backend/tmp/pids/
+!/rails-backend/tmp/pids/.keep
 
 # Ignore storage (uploaded files in development and any SQLite databases).
-/storage/*
-!/storage/.keep
-/tmp/storage/*
-!/tmp/storage/
-!/tmp/storage/.keep
+/rails-backend/storage/*
+!/rails-backend/storage/.keep
+/rails-backend/tmp/storage/*
+!/rails-backend/tmp/storage/
+!/rails-backend/tmp/storage/.keep
 
-/public/assets
+/rails-backend/public/assets
+rails-backend/.idea
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+/rails-backend/config/master.key
 
-/app/assets/builds/*
-!/app/assets/builds/.keep
+/rails-backend/app/assets/builds/*
+!/rails-backend/app/assets/builds/.keep
 
-/node_modules
+/rails-backend/node_modules
 
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+/ng-frontend/dist
+/ng-frontend/tmp
+/ng-frontend/out-tsc
+/ng-frontend/bazel-out
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+/ng-frontend/node_modules
+/ng-frontend/npm-debug.log
+/ng-frontend/yarn-error.log
 
 # IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+/ng-frontend/.idea/
+/ng-frontend/.project
+/ng-frontend/.classpath
+/ng-frontend/.c9/
+/ng-frontend/*.launch
+/ng-frontend/.settings/
+/ng-frontend/*.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+/ng-frontend/.vscode/*
+/ng-frontend/!.vscode/settings.json
+/ng-frontend/!.vscode/tasks.json
+/ng-frontend/!.vscode/launch.json
+/ng-frontend/!.vscode/extensions.json
+/ng-frontend/.history/*
+/ng-frontend/.editorconfig
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+/ng-frontend/.angular/cache
+/ng-frontend/.sass-cache/
+/ng-frontend/connect.lock
+/ng-frontend/coverage
+/ng-frontend/libpeerconnection.log
+/ng-frontend/testem.log
+/ng-frontend/typings
 
 # System files
-.DS_Store
-Thumbs.db
-
+/ng-frontend/.DS_Store
+/ng-frontend/Thumbs.db
