@@ -8,6 +8,15 @@ The web servers run on the following ports:
 |-------------|-------------|
 | backend |http://localhost:3000|
 |frontend| http://localhost:4200 |
+
+### Prerequisites
+- Ruby
+- Rails
+- Node.js
+- npm
+- yarn
+- angular cli
+
 ---
 ## Rails Backend
 
@@ -15,7 +24,9 @@ The web servers run on the following ports:
 
 1. Navigate to rails-backend/
 2. Run `bundle install`, `npm install` and `yarn install`
-3. Start dev server: `rails s`
+3. Run `rails db:migrate`
+4. Rund `rails assets:precompile`
+5. Start dev server: `rails s`
 
 ---
 ## Angular Frontend
