@@ -18,7 +18,7 @@ export class ArticlesService {
 
   createArticle(article: IArticle) {
     // post methods needs the url of the api endpoint and a javascript object
-    // the js object is converted to json automatically before the request is send
+    // the js object is converted to json automatically before the request is sent
     this.http.post('api/v1/articles', article).subscribe(() => {
       console.log("article created by ng frontend");
     });

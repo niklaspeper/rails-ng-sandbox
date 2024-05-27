@@ -1,2 +1,7 @@
 <h1>Blog</h1>
-<blog-articles></blog-articles>
+<nav>
+  <!-- example usage of angular router link and active route check -->
+  <a class="button" routerLink="/articles" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Articles</a> |
+  <a class="button" routerLink="/authors" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Authors</a>
+</nav>
+<router-outlet></router-outlet>

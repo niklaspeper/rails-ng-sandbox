@@ -1,0 +1,13 @@
+.button {
+  padding-inline: 1rem;
+  text-decoration: underline;
+  color: blue;
+}
+
+.activebutton {
+  color: red;
+}
+
+:hover .button {
+  cursor: pointer;
+}

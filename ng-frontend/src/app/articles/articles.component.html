@@ -1,8 +1,7 @@
 <h3>Articles</h3>
-<hr>
-<h6>Test Elements</h6>
 <!-- with interpolation -->
-<div id="data binding example">
+<div id="data binding example" hidden>
+  <hr>
   <!-- safe navigation operator '?' checks if object is null -->
   <!-- if null, it renders nothing rather than throwing an error -->
   <img src="" alt="{{article.title+ ' example pic'}}">
@@ -14,15 +13,8 @@
   <br>
   <!-- example with function binding -->
   <img src="" [alt]="createAltTag(article)">
+  <hr>
 </div>
-<br>
-<hr>
-<br>
-<br>
-<p><b>{{article.title}}</b></p>
-<p>{{article.body}}</p>
-<p>{{article.status}}</p>
-<hr>
 <p><b>Liked Articles</b></p>
 <li *ngFor="let article of likedArticles">
   <p>{{article.title}}</p>
@@ -46,10 +38,12 @@
   <ul>
     <!-- angular for loop -->
     <li *ngFor="let article of getFilteredArticles()">
-      <!-- passing down data to child component ([article]="article")-->
-      <!-- receiving events from child components ((favor)="addFavouredArticle(article)") -->
-      <blog-article-details [article]="article" (like)="addLikedArticle(article)"
-        (favour)="addFavouredArticle(article)"></blog-article-details>
+      <div>
+        <!-- passing down data to child component ([article]="article")-->
+        <!-- receiving events from child components ((favor)="addFavouredArticle(article)") -->
+        <blog-article-details [article]="article" (like)="addLikedArticle(article)"
+          (favour)="addFavouredArticle(article)"></blog-article-details>
+      </div>
     </li>
   </ul>
 </div>
