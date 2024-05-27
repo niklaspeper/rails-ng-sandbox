@@ -7,3 +7,7 @@
 :hover .button {
   cursor: pointer;
 }
+
+.active {
+  color: red;
+}

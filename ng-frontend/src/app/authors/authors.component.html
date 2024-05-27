@@ -1,1 +1,6 @@
 <p>authors works!</p>
+<!-- routing example buttons -->
+<button (click)="goToArticles()">Go to Articles</button>
+<button routerLink="/articles" [queryParams]="{filter: 'public'}">Show public articles</button>
+<button routerLink="/articles" [queryParams]="{filter: 'private'}">Show private articles</button>
+<button routerLink="/articles" [queryParams]="{filter: 'archived'}">Show archived articles</button>

@@ -3,5 +3,7 @@
   <!-- example usage of angular router link and active route check -->
   <a class="button" routerLink="/articles" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Articles</a> |
   <a class="button" routerLink="/authors" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Authors</a>
+  <!-- or use an array as a url builder which results in /articles/1 -->
+  <!-- <a [routerLink]="['articles',1]">Go to Article 1</a> -->
 </nav>
 <router-outlet></router-outlet>

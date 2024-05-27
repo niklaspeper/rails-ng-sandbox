@@ -31,9 +31,10 @@
     <!-- example of binding to html events using statements-->
     <!-- note: parentheses create only one-way binding from template to component -->
     <!-- statements return no value and typically create some sort of change in the state of the app -->
-    <a class="button" (click)="filter='public'">public</a>
-    <a class="button" (click)="filter='private'">private</a>
-    <a class="button" (click)="filter='archived'">archived</a>
+    <a routerLink="/articles" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="button">all</a>
+    <a routerLink="/articles" [queryParams]="{filter: 'public'}" routerLinkActive="active" class="button">public</a>
+    <a routerLink="/articles" [queryParams]="{filter: 'private'}" routerLinkActive="active" class="button">private</a>
+    <a routerLink="/articles" [queryParams]="{filter: 'archived'}" routerLinkActive="active" class="button">archived</a>
   </div>
   <ul>
     <!-- angular for loop -->
