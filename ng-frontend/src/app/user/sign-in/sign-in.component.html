@@ -1,0 +1,14 @@
+<div class="container">
+  <!-- using ngSubmit to define the action that is executed when hitting submit -->
+  <form class="form" (ngSubmit)="signIn()">
+    <div class="sign-in">Sign In</div>
+    <!-- ngModel allows two way databinding. in this case it is used to bind the inputs value to the components properties. The property is also bind from the components code to this input field. ngModel uses name attribute internally -->
+    <input name="email" [(ngModel)]="credentials.email" placeholder="Email Address" type="text" />
+    <input name="password" [(ngModel)]="credentials.password" placeholder="Password" type="password" />
+    <div class="buttons">
+      <button type="submit" class="button cta">
+        Sign In
+      </button>
+    </div>
+  </form>
+</div>
