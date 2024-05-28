@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent {
   credentials: IUserCredentials = { email: '', password: '' };
+  errors: string = "";
   private userSvc: UserService = inject(UserService);
   private router: Router = inject(Router);
 
@@ -25,7 +26,8 @@ export class SignInComponent {
     // subscribers are functions that receive emitted values from an observable. they can handle the data, perform side effects, or unsubscribe from the observable.
     this.userSvc.signIn(this.credentials).subscribe({
       // when the user successfully signed in, navigate to articles page
-      next: () => this.router.navigate(['articles'])
+      next: () => this.router.navigate(['articles']),
+      error: err => alert("An error occured")
     })
   }
 }

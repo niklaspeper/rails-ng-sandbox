@@ -23,7 +23,8 @@ export class UserService {
 
   signIn(credentials: IUserCredentials): Observable<IUser> {
     return this.http
-      .post<IUser>('/api/sign-in', credentials)
+      // adjust url to api endpoint
+      .post<IUser>('/api/users/login', credentials)
       .pipe(map((user: IUser) => {
         // when post succeeds the rxjs map function is used to grab and cache the returned user object locally
         this.user.next(user);
