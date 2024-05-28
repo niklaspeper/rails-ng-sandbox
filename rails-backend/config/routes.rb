@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # was generated automatically by devise gem
-  devise_for :users
+  # override default devise routes and add route aliases
+  devise_for :users, path: 'api/users/', path_names: {
+                                           sign_in: 'login',
+                                           sign_out: 'logout',
+                                           registration: 'signup'
+                                         },
+                     controllers: {
+                       sessions: 'users/sessions',
+                       registrations: 'users/registrations'
+                     }
   root 'articles#index'
   # get '/articles', to: "articles#index"
   # get "/articles/:id", to: "articles#show"

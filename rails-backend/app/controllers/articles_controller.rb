@@ -72,12 +72,16 @@ class ArticlesController < ApplicationController
   def create_testuser
     return unless User.all.empty?
 
-    User.create
+    user = User.new
+    user.email = 'test@test.de'
+    user.password = '123456'
+    user.jti = SecureRandom.uuid
+    user.save
   end
 
   # "strong parameter"
   def article_params
-    # set user id to 1 cause its the test user id
+    # manually give the article user id 1 cause its the test user id
     params.require(:article).permit(:title, :body, :status, :keyword).merge(user_id: 1)
   end
 end
