@@ -6,4 +6,11 @@
   <!-- or use an array as a url builder which results in /articles/1 -->
   <!-- <a [routerLink]="['articles',1]">Go to Article 1</a> -->
 </nav>
+<div *ngIf="currentUser">
+  <small>
+    Logged in as
+  </small>
+  {{currentUser===null? 'null':currentUser.email}}
+  <button (click)="logOut()">Log out</button>
+</div>
 <router-outlet></router-outlet>
