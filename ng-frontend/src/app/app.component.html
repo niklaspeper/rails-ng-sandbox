@@ -1,16 +1,18 @@
 <h1>Blog</h1>
-<nav>
-  <!-- example usage of angular router link and active route check -->
-  <a class="button" routerLink="/articles" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Articles</a> |
-  <a class="button" routerLink="/authors" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Authors</a>
-  <!-- or use an array as a url builder which results in /articles/1 -->
-  <!-- <a [routerLink]="['articles',1]">Go to Article 1</a> -->
-</nav>
-<div *ngIf="currentUser">
-  <small>
-    Logged in as
-  </small>
-  {{currentUser===null? 'null':currentUser.email}}
-  <button (click)="logOut()">Log out</button>
+<div class="nav-container">
+  <nav *ngIf="currentUser">
+    <!-- example usage of angular router link and active route check -->
+    <a class="button" routerLink="/articles" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Articles</a> |
+    <a class="button" routerLink="/authors" routerLinkActive="activebutton" ariaCurrentWhenActive="page">Authors</a>
+    <!-- or use an array as a url builder which results in /articles/1 -->
+    <!-- <a [routerLink]="['articles',1]">Go to Article 1</a> -->
+  </nav>
+  <div *ngIf="currentUser">
+    <small>
+      Logged in as
+    </small>
+    {{currentUser===null? 'null':currentUser.email}}
+    <button (click)="logOut()">Log out</button>
+  </div>
 </div>
 <router-outlet></router-outlet>

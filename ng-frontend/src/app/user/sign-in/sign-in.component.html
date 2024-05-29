@@ -10,8 +10,8 @@
         Sign In
       </button>
     </div>
-    <div>
-      {{errors}}
+    <div class='signInError' *ngIf="signInError">
+      Sign in failed. Please try again.
     </div>
   </form>
 </div>

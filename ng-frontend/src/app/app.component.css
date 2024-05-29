@@ -11,3 +11,8 @@
 :hover .button {
   cursor: pointer;
 }
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+}
