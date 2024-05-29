@@ -25,8 +25,9 @@ The web servers run on the following ports:
 1. Navigate to rails-backend/
 2. Run `bundle install`, `npm install` and `yarn install`
 3. Run `rails db:migrate`
-4. Rund `rails assets:precompile`
-5. Start dev server: `rails s`
+4. Run `rails db:seed`
+5. Rund `rails assets:precompile`
+6. Start dev server: `rails s`
 
 ---
 ## Angular Frontend
@@ -36,6 +37,13 @@ The web servers run on the following ports:
 1. Navigate to ng-frontend/
 2. Run `npm install` and you are ready to go
 3. Start dev server: `npm start`
+
+#### Login
+
+Use the following credentials for logging into the app:
+
+email: test@test.de
+password: 123456
 
 ### Code scaffolding
 

@@ -7,6 +7,7 @@ module Users
 
     private
 
+    # defines how to respond to POST
     def respond_with(current_user, _opts = {})
       render json: {
         status: {
@@ -16,6 +17,7 @@ module Users
       }, status: :ok
     end
 
+    # defines how to respond to DELETE
     def respond_to_on_destroy
       if request.headers['Authorization'].present?
         jwt_payload = JWT.decode(request.headers['Authorization'].split(' ').last,
