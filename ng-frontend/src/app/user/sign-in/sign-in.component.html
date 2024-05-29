@@ -1,12 +1,20 @@
 <div class="container">
   <!-- using ngSubmit to define the action that is executed when hitting submit -->
-  <form class="form" (ngSubmit)="signIn()">
+  <!-- attributes starting with '#' are template variables -> can be used for validation  -->
+  <form #signInForm="ngForm" class="form" (ngSubmit)="signIn()">
     <div class="sign-in">Sign In</div>
     <!-- ngModel allows two way databinding. in this case it is used to bind the inputs value to the components properties. The property is also bind from the components code to this input field. ngModel uses name attribute internally -->
-    <input name="email" [(ngModel)]="credentials.email" placeholder="Email Address" type="text" />
-    <input name="password" [(ngModel)]="credentials.password" placeholder="Password" type="password" />
+    <input name="email" required email #email="ngModel" [(ngModel)]="credentials.email" placeholder="Email Address"
+      type="text" />
+    <!-- template variables contain different information -->
+    <!-- email contains error object. can be checked if its present with safe navigation operator '?'-->
+    <em class="error" *ngIf="email.errors?.['required'] && email.touched">Email is required</em>
+    <em class="error" *ngIf="email.errors?.['email']&& email.touched">Please enter a valid email</em>
+    <input name="password" required #password="ngModel" [(ngModel)]="credentials.password" placeholder="Password"
+      type="password" />
+    <em class="error" *ngIf="password.invalid && password.touched">Password is required</em>
     <div class="buttons">
-      <button type="submit" class="button cta">
+      <button type="submit" class="button cta" [disabled]="signInForm.invalid">
         Sign In
       </button>
     </div>
