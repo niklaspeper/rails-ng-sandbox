@@ -2,7 +2,7 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 // imports for angular routing functionality
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-// import for http calls
+// import for http calls and http interception for jwt attachment
 import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { jwtInterceptor } from './jwt.interceptor';
 

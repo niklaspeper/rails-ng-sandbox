@@ -25,6 +25,7 @@ export class AppComponent {
   }
   logOut() {
     this.userSvc.signOut().subscribe({
+      // whenever a change in the subscribed object happens, next is called
       next: () => {
         localStorage.removeItem('access_token');
         this.router.navigate(['sign-in']);

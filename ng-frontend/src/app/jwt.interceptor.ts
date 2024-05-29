@@ -1,6 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 // interceptor for adding authorization token to every http request
+// to use it througout the entire app, it must be included in app.config.ts
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   const authToken = localStorage.getItem('access_token');
 
