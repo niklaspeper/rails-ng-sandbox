@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 // rxjs (reactive extensions for javascript) is a powerful library for composing asynchronous and event-based programs using observable sequences. It provides a way to handle data streams and events in a declarative and functional manner.
-import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { IUser, IUserCredentials } from './user.model';
 
 @Injectable({
@@ -19,6 +19,10 @@ export class UserService {
   // observables represent streams of values that can be emitted over time. you can subscribe to an observable to receive these values.
   getUser(): Observable<IUser | null> {
     return this.user;
+  }
+
+  isLoggedIn(): boolean {
+    return this.user.getValue() === null ? false : true;
   }
 
   signIn(credentials: IUserCredentials): Observable<IUser> {
